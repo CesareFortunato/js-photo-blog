@@ -10,20 +10,31 @@ const captionEl = document.querySelector(".card .caption");
 // chiamata all'api
 
 axios.get("https://lanciweb.github.io/demo/api/pictures/")
-  .then(response => {
-    const firstPhoto = response.data[0]; // prendo la prima foto
-
-    // metto l'immagine dentro .img-container
-    cardImgContainer.innerHTML = `
-      <img src="${firstPhoto.url}" alt="${firstPhoto.title}">
-    `;
-
-    // metto descrizione + data
-    captionEl.innerHTML = `
-      <strong>${firstPhoto.title}</strong><br>
-      <small>${firstPhoto.date}</small>
-    `;
+    .then(res => {
+    generateCards(res.data);
   })
-  .catch(error => {
-    console.error(error);
+  .catch(console.error);
+
+
+
+  //funzioni
+
+  function generateCards(polaroids) {
+  let outputPolaroids = "";
+
+  polaroids.forEach(polaroid => {
+    outputPolaroids += `
+      <div class="card">
+        <div class="img-container">
+          <img src="${polaroid.url}" alt="${polaroid.title}">
+        </div>
+        <p class="caption">
+          <strong>${polaroid.title}</strong><br>
+          <small>${polaroid.date}</small>
+        </p>
+      </div>
+    `;
   });
+
+  mainContainer.innerHTML = outputPolaroids;
+}
