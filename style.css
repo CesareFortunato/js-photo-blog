@@ -69,6 +69,12 @@ p {
     /* quando arriva l’immagine vera */
 }
 
+.img-container img{width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
 /* testo sotto */
 .caption {
     margin-top: 12px;
