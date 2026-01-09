@@ -119,9 +119,9 @@ p {
   z-index: 9999;
 }
 
-/* .overlay.hidden{
+.overlay.hidden{
   display: none;
-} */
+}
 
 .overlay-content{
   position: relative;
