@@ -20,7 +20,7 @@ header {
 }
 
 header h1 {
-  font-size: clamp(48px, 10vw, 160px);
+    font-size: clamp(48px, 10vw, 160px);
 }
 
 
@@ -59,7 +59,15 @@ p {
     border: 1px solid rgba(0, 0, 0, 0.08);
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.18);
     position: relative;
-    width: calc((100% - 64px) / 3); 
+    width: calc((100% - 64px) / 3);
+    cursor: pointer;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.card:hover {
+    transform: scale(1.05) rotate(2deg);
+    box-shadow: 0 18px 35px rgba(0, 0, 0, 0.35);
+    
 }
 
 .img-container {
@@ -71,10 +79,12 @@ p {
     /* quando arriva l’immagine vera */
 }
 
-.img-container img{width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
+.img-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  
 }
 
 /* testo sotto */
@@ -99,8 +109,13 @@ p {
     background-repeat: no-repeat;
     background-position: center;
     pointer-events: none;
-    /* decorativo */
     z-index: 2;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.card:hover::before {
+  opacity: 0;
+  transform: translateX(-50%) translateY(-4px);
 }
 
 
@@ -109,45 +124,46 @@ p {
 
 
 /* OVERLAY */
-.overlay{
-  position: fixed;
-  inset: 0;                 /* top:0 right:0 bottom:0 left:0 “Attaccami a tutti i lati del viewport.” */
-  background: rgba(0,0,0,0.6);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 9999;
+.overlay {
+    position: fixed;
+    inset: 0;
+    /* top:0 right:0 bottom:0 left:0 “Attaccami a tutti i lati del viewport.” */
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
 }
 
-.overlay.hidden{
-  display: none;
+.overlay.hidden {
+    display: none;
 }
 
-.overlay-content{
-  position: relative;
-  background: #fff;
-  padding: 16px;
-  border-radius: 8px;
-  max-width: 90vw;
-  max-height: 90vh;
+.overlay-content {
+    position: relative;
+    background: #fff;
+    padding: 16px;
+    border-radius: 8px;
+    max-width: 90vw;
+    max-height: 90vh;
 }
 
-.overlay-content img{
-  display: block;
-  max-width: 80vw;
-  max-height: 80vh;
-  object-fit: contain;
+.overlay-content img {
+    display: block;
+    max-width: 80vw;
+    max-height: 80vh;
+    object-fit: contain;
 }
 
-.overlay-close{
-  position: absolute;
-  top: -40px;               
-  left: 50%;
-  transform: translateX(-50%);
-  padding: 6px 12px;
-  background: #fff;
-  border: none;
-  cursor: pointer;
+.overlay-close {
+    position: absolute;
+    top: -40px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 6px 12px;
+    background: #fff;
+    border: none;
+    cursor: pointer;
 }
 
 
@@ -159,11 +175,15 @@ p {
 /* responsive */
 
 /* tablet */
-@media (max-width: 992px){
-  .card{ width: calc((100% - 32px) / 2); }
+@media (max-width: 992px) {
+    .card {
+        width: calc((100% - 32px) / 2);
+    }
 }
 
 /* mobile */
-@media (max-width: 576px){
-  .card{ width: 100%; }
+@media (max-width: 576px) {
+    .card {
+        width: 100%;
+    }
 }
