@@ -1,13 +1,11 @@
 //dichiaro variabili
 
 const mainContainer = document.getElementById("main-container");
-const polaroid = document.querySelector("card");
-const cardImgContainer = document.querySelector(".card .img-container");
-const captionEl = document.querySelector(".card .caption");
 
 //variabili overlay per event
 const overlay = document.getElementById("overlay");
 const closeBtn = document.getElementById("overlay-close");
+const overlayImg = document.getElementById("overlay-img");
 
 
 
@@ -48,14 +46,23 @@ function generateCards(polaroids) {
 
 mainContainer.addEventListener("click", (e) => {
   const card = e.target.closest(".card");   //.target -> riconosce l'elemento HTML su cui ho cliccato / .closest(".card") risale all'elemento più vicino che ha come classe .card
-  if (!card) return;          // se click fuori dalle card
+  if (!card) return;   // se click fuori dalle card
+
+  const img = card.querySelector("img");
+  if (!img) return;
+
+  overlayImg.src = img.src;
+  overlayImg.alt = img.alt;
 
   overlay.classList.remove("hidden");
 });
 
-//chiusura polaroid
+
+
+
+  //chiusura polaroid
 
 closeBtn.addEventListener("click", () => {
   overlay.classList.add("hidden");
-});
+}); 
 
